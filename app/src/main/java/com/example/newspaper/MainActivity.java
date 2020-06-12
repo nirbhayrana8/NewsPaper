@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.OnNew
     public void OnNewsClick(int position) {
 
         Intent intent = new Intent(this, NewsView.class);
-
+        intent.putExtra("url", viewModel.getNews().getValue().get(position).getUrls());
         startActivity(intent);
     }
 
