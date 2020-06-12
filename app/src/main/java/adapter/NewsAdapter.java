@@ -1,13 +1,8 @@
-package Adapter;
+package adapter;
 
-import android.graphics.Bitmap;
-import android.net.http.SslError;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.SslErrorHandler;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,15 +14,16 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import model.NewsModel;
+
 public class NewsAdapter extends RecyclerView.Adapter <NewsAdapter.NewsViewHolder> {
 
-    private ArrayList<String> titles, urls, imageUrls;
     private OnNewsListener onNewsListener;
+    private ArrayList<NewsModel> data;
 
-    public NewsAdapter(ArrayList<String> titles, ArrayList<String> urls, ArrayList<String> imageUrls, OnNewsListener onNewsListener) {
-        this.titles = titles;
-        this.urls = urls;
-        this.imageUrls = imageUrls;
+
+    public NewsAdapter(ArrayList<NewsModel> data, OnNewsListener onNewsListener) {
+        this.data = data;
         this.onNewsListener = onNewsListener;
     }
 
@@ -45,13 +41,13 @@ public class NewsAdapter extends RecyclerView.Adapter <NewsAdapter.NewsViewHolde
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
 
-        holder.textView.setText(titles.get(position));
-        Picasso.get().load(imageUrls.get(position)).into(holder.imageView);
+        holder.textView.setText(data.get(position).getTitles());
+        Picasso.get().load(data.get(position).getImageUrls()).into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return titles.size();
+        return data.size();
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
