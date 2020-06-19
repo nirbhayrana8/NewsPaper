@@ -1,4 +1,4 @@
-package com.example.newspaper;
+package com.example.newspaper.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.newspaper.R;
 
 public class NewsView extends AppCompatActivity {
 
